@@ -1,0 +1,65 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:arc="https://github.com/AIDotNet/TKCode.Arc"
+             xmlns:models="using:N4RNACSite.Models"
+             xmlns:vm="using:N4RNACSite.ViewModels"
+             x:Class="N4RNACSite.Pages.ProjectsPage"
+             x:DataType="vm:ProjectsPageViewModel">
+    <UserControl.Styles>
+        <Style Selector="TextBlock.caption">
+            <Setter Property="FontSize" Value="{arc:ArcDesignTokenResource TypeXS}" />
+            <Setter Property="Foreground" Value="{arc:ArcDesignTokenResource TextMuted}" />
+        </Style>
+        <Style Selector="Border.row">
+            <Setter Property="Padding" Value="0,12" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="BorderBrush" Value="{arc:ArcDesignTokenResource BorderSubtle}" />
+        </Style>
+    </UserControl.Styles>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="28,24,28,28" Spacing="20" MaxWidth="880" HorizontalAlignment="Left">
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="24">
+                <StackPanel Spacing="4">
+                    <TextBlock Text="项目"
+                               FontSize="{arc:ArcDesignTokenResource Type2XL}"
+                               FontWeight="Medium"
+                               Foreground="{arc:ArcDesignTokenResource Foreground}" />
+                    <TextBlock Text="示例数据（Models/Project.cs）：换成你自己的数据源。"
+                               TextWrapping="Wrap"
+                               Foreground="{arc:ArcDesignTokenResource TextSecondary}" />
+                </StackPanel>
+                <arc:Button Grid.Column="1" Content="新建项目" VerticalAlignment="Center" Command="{Binding AddProjectCommand}" />
+            </Grid>
+
+            <Border BorderThickness="0,1,0,0" BorderBrush="{arc:ArcDesignTokenResource BorderSubtle}">
+                <ItemsControl ItemsSource="{Binding Projects}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="models:Project">
+                            <Border Classes="row">
+                                <Grid ColumnDefinitions="Auto,*,Auto,80" ColumnSpacing="12">
+                                    <arc:Avatar DisplayName="{Binding Owner}" Size="Small" VerticalAlignment="Center" />
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Name}"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   Foreground="{arc:ArcDesignTokenResource Foreground}" />
+                                        <TextBlock Classes="caption" Text="{Binding Team}" />
+                                    </StackPanel>
+                                    <arc:Badge Grid.Column="2"
+                                               Size="Small"
+                                               Tone="{Binding Tone}"
+                                               Content="{Binding Status}"
+                                               VerticalAlignment="Center" />
+                                    <TextBlock Grid.Column="3"
+                                               Classes="caption"
+                                               Text="{Binding Updated}"
+                                               HorizontalAlignment="Right"
+                                               VerticalAlignment="Center" />
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

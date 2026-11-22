@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="N4RNACSite/N4RNACSite.csproj" />
+  <Project Path="N4RNACSite.Browser/N4RNACSite.Browser.csproj" />
+</Solution>
