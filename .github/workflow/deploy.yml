@@ -1,0 +1,28 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [ master ] # 或者手动触发 workflow_dispatch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 11.0 # 换成你的版本
+      - run: dotnet workload install wasm-tools
+      - run: dotnet publish N4RNACSite.Browser/N4RNACSite.Browser.csproj -c Release
+
+      # 关键修复：添加 .nojekyll 和 404.html
+      - name: Prepare for GitHub Pages
+        run: |
+          OUTPUT="N4RNACSite.Browser/bin/Release/net11.0-browser/publish/wwwroot"
+          touch $OUTPUT/.nojekyll
+          cp $OUTPUT/index.html $OUTPUT/404.html
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: N4RNACSite.Browser/bin/Release/net11.0-browser/publish/wwwroot
+          branch: gh-pages
