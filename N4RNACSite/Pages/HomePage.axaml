@@ -20,34 +20,14 @@
                 <TextBlock FontSize="{arc:ArcDesignTokenResource Type2XL}"
                            FontWeight="Medium"
                            Foreground="{arc:ArcDesignTokenResource Foreground}">
-                    <Run Text="欢迎使用" /><Run Text=" N4RNACSite" />
+                    <Run Text="Hi !" />
+                    <Run Text="This is N4RNAC Site !"
+                         FontSize="20"/>
                 </TextBlock>
-                <TextBlock Text="一个由 TKCode.Arc 控件搭建的起点。把这些页面换成你自己的内容。"
+                <TextBlock Text="一个使用 TKCode.Arc 控件搭建的个人小站"
                            TextWrapping="Wrap"
                            Foreground="{arc:ArcDesignTokenResource TextSecondary}" />
             </StackPanel>
-
-            <Border CornerRadius="16"
-                    BorderThickness="1"
-                    ClipToBounds="True"
-                    BorderBrush="{arc:ArcDesignTokenResource Border}">
-                <Grid ColumnDefinitions="*,Auto,*,Auto,*">
-                    <StackPanel Margin="16,14" Spacing="6">
-                        <TextBlock Classes="caption" Text="进行中的项目" />
-                        <TextBlock Classes="stat" Text="3" />
-                    </StackPanel>
-                    <Border Grid.Column="1" Width="1" Background="{arc:ArcDesignTokenResource Border}" />
-                    <StackPanel Grid.Column="2" Margin="16,14" Spacing="6">
-                        <TextBlock Classes="caption" Text="本周到期的任务" />
-                        <TextBlock Classes="stat" Text="12" />
-                    </StackPanel>
-                    <Border Grid.Column="3" Width="1" Background="{arc:ArcDesignTokenResource Border}" />
-                    <StackPanel Grid.Column="4" Margin="16,14" Spacing="6">
-                        <TextBlock Classes="caption" Text="已完成" />
-                        <TextBlock Classes="stat" Text="48" />
-                    </StackPanel>
-                </Grid>
-            </Border>
 
             <arc:Card Title="下一步" Description="接下来可以做什么。">
                 <StackPanel Spacing="12" Margin="0,12,0,0">

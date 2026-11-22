@@ -26,7 +26,7 @@
                                            VerticalAlignment="Center"
                                            Foreground="{arc:ArcDesignTokenResource Background}" />
                     </Border>
-                    <TextBlock Text="N4RNACSite"
+                    <TextBlock Text="N4RNAC Site"
                                VerticalAlignment="Center"
                                FontWeight="Medium"
                                Foreground="{arc:ArcDesignTokenResource Foreground}" />
@@ -34,7 +34,7 @@
                 <arc:SegmentedControl Grid.Column="1"
                                       VerticalAlignment="Center"
                                       SelectedValue="{Binding SelectedKey, Mode=TwoWay}"
-                                      AutomationProperties.Name="N4RNACSite">
+                                      AutomationProperties.Name="N4RNAC Site">
                     <arc:SegmentedOption Value="home" Label="首页" />
                     <arc:SegmentedOption Value="projects" Label="项目" />
                 </arc:SegmentedControl>
